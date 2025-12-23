@@ -24,7 +24,7 @@ Os objetivos principais foram:
 ## 📋 Premissas
 
 - O **iFood financiou 100% do valor do cupom**;
-- O valor do cupom **não está refletido diretamente no valor do pedido** — a coluna `discount` encontra-se zerada na base original;
+- O valor do cupom **não está refletido diretamente no valor do pedido** — a coluna `discount` encontra-se zerada na base original. Nessa caso fiz uma proposta de política de desconto;
 - O objetivo da campanha **não é lucro imediato**, mas sim **aumentar retenção e LTV** no médio e longo prazo;
 - A **margem de contribuição** adotada na análise é de **25%**.
 
@@ -54,8 +54,6 @@ Foram analisadas distribuições, estatísticas descritivas e outliers das princ
 Foram testados dois métodos:
 - Corte por percentil (P99);
 - Método do Intervalo Interquartil (IQR).
-
-O **IQR** foi escolhido por ser mais robusto para distribuições assimétricas e preservar melhor o comportamento central dos dados.
 
 ---
 
