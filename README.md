@@ -163,5 +163,9 @@ from sklearn.preprocessing import StandardScaler
 from statsmodels.stats.proportion import proportions_ztest
 from scipy.stats import ttest_ind, mannwhitneyu
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+from sklearn.metrics import calinski_harabasz_score
 
 
