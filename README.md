@@ -130,6 +130,38 @@ Para executar o notebook, é necessário:
 
 ### Bibliotecas Python
 ```bash
-pip install pyspark pandas matplotlib seaborn scikit-learn statsmodels scipy
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+from pyspark.sql.window import Window
+from pyspark.sql.functions import col, sum as spark_sum, least, when
+from pyspark.sql.functions import (
+    min as spark_min, max as spark_max, col, sum, avg, countDistinct, lit,
+    from_json, explode, datediff, current_date, expr, mean,
+    percentile_approx, count, isnan, when
+)
+from pyspark.sql.window import Window
+from pyspark.sql.functions import (
+    col, count, countDistinct, avg, sum as spark_sum,
+    min, max, datediff, round as spark_round, first
+)
+from pyspark.sql.types import (
+    DoubleType, IntegerType, StringType, StructType,
+    StructField, ArrayType, BooleanType, LongType, FloatType
+)
+from pyspark.ml.feature import StringIndexer
+from pyspark.ml.evaluation import ClusteringEvaluator
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import os
+import tarfile
+import gzip
+import shutil
+import builtins
+from sklearn.preprocessing import StandardScaler
+from statsmodels.stats.proportion import proportions_ztest
+from scipy.stats import ttest_ind, mannwhitneyu
+from sklearn.decomposition import PCA
 
 
