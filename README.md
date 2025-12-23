@@ -115,7 +115,8 @@ Foi aplicada segmentação via **KMeans**, utilizando variáveis comportamentais
 
 Você pode executar este projeto diretamente no Google Colab, sem necessidade de configuração local.
 
-👉 [Abrir no Google Colab!]([https://colab.research.google.com/drive/1AoaEq6VbSvaBpX3oBeWwLl-npcQiZC3i?usp=sharing](https://colab.research.google.com/drive/1o-wOlPtn0FGHzD-P-dYt6nfQ84JT23V-?usp=sharing))
+👉 [Abrir no Google Colab!](https://colab.research.google.com/drive/1o-wOlPtn0FGHzD-P-dYt6nfQ84JT23V-?usp=sharing)
+
 
 ---
 
