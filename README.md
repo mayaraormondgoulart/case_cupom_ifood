@@ -103,20 +103,21 @@ As métricas foram comparadas entre **grupo controle** e **grupo target**, com t
 
 ## 🧠 Segmentação de Usuários
 
-Foi aplicada segmentação via **KMeans**, utilizando variáveis comportamentais e financeiras:
-- Quantidade de pedidos;
-- Frequência;
-- Ticket médio;
-- Recência;
-- Valor total gasto;
-- Tempo de vida;
-- Diversidade de restaurantes.
+Foi aplicada segmentação via **KMeans**, utilizando variáveis comportamentais e financeiras.
 
 ### Definição do número de clusters
 - Método do cotovelo (Elbow Method);
 - Índice de Calinski-Harabasz.
 
 📌 O valor **k = 3** foi escolhido por apresentar o melhor equilíbrio entre separação estatística e interpretabilidade de negócio.
+
+---
+
+### 💻 Execute no Google Colab
+
+Você pode executar este projeto diretamente no Google Colab, sem necessidade de configuração local.
+
+👉 [https://colab.research.google.com/github/SEU_USUARIO/SEU_REPOSITORIO/blob/main/Case_iFood_AB_Test.ipynb](https://colab.research.google.com/drive/1AoaEq6VbSvaBpX3oBeWwLl-npcQiZC3i?usp=sharing)
 
 ---
 
@@ -130,4 +131,5 @@ Para executar o notebook, é necessário:
 ### Bibliotecas Python
 ```bash
 pip install pyspark pandas matplotlib seaborn scikit-learn statsmodels scipy
+
 
