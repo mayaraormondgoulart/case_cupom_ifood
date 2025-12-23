@@ -117,7 +117,7 @@ Foi aplicada segmentação via **KMeans**, utilizando variáveis comportamentais
 
 Você pode executar este projeto diretamente no Google Colab, sem necessidade de configuração local.
 
-👉 [https://colab.research.google.com/github/SEU_USUARIO/SEU_REPOSITORIO/blob/main/Case_iFood_AB_Test.ipynb](https://colab.research.google.com/drive/1AoaEq6VbSvaBpX3oBeWwLl-npcQiZC3i?usp=sharing)
+👉 [Abrir no Google Colab!](https://colab.research.google.com/drive/1AoaEq6VbSvaBpX3oBeWwLl-npcQiZC3i?usp=sharing)
 
 ---
 
