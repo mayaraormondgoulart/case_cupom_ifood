@@ -1,22 +1,32 @@
-# 📊 Case iFood — Teste A/B, Análise Financeira e Segmentação de Usuários
 
-Este projeto tem como objetivo analisar o impacto de uma **campanha de cupons** utilizando um **teste A/B**, avaliando efeitos em métricas comportamentais, financeiras e de retenção de usuários.  
-Além disso, são propostas **segmentações de clientes** e **recomendações estratégicas** com base nos resultados obtidos.
+# 📦 iFood Case — Análise de Campanha com Cupons
+
+Este projeto realiza uma **análise completa de uma campanha de cupons no iFood**, combinando **teste A/B**, **estatística aplicada**, **análise financeira (ROI e LTV)** e **segmentação de usuários** para avaliar o impacto da ação em métricas comportamentais e de negócio.
+
+A análise foi desenvolvida utilizando **PySpark**, bibliotecas estatísticas em Python e técnicas de Machine Learning para suportar decisões orientadas a dados.
 
 ---
 
 ## 🧩 Contexto do Problema
 
-No iFood, testes A/B são amplamente utilizados para validar hipóteses de crescimento e avaliar o impacto de novas iniciativas em métricas-chave do negócio.  
+No iFood, diferentes áreas utilizam testes A/B para validar hipóteses de crescimento e avaliar o impacto de novas iniciativas.  
+Neste case, foi fornecida uma base de pedidos contendo uma **marcação de usuários em grupo controle e grupo target**, onde o grupo target recebeu um **cupom promocional**.
 
-Neste case, foi disponibilizada uma base de pedidos contendo uma **marcação de usuários em grupo controle e grupo target**, onde o grupo target recebeu um **cupom promocional**.
+Os objetivos principais foram:
 
-Os principais objetivos da análise são:
-
-1. Avaliar se a campanha teve **impacto estatisticamente significativo**;
+1. Avaliar se a campanha teve **impacto significativo**;
 2. Analisar a **viabilidade financeira** da iniciativa;
-3. Criar **segmentações de usuários** para aprofundar a análise;
-4. Propor **próximos passos e melhorias** para novos testes A/B.
+3. Criar **segmentações de clientes** relevantes para o teste;
+4. Propor **melhorias e próximos passos**.
+
+---
+
+## 📋 Premissas
+
+- O **iFood financiou 100% do valor do cupom**;
+- O valor do cupom **não está refletido diretamente no valor do pedido** — a coluna `discount` encontra-se zerada na base original;
+- O objetivo da campanha **não é lucro imediato**, mas sim **aumentar retenção e LTV** no médio e longo prazo;
+- A **margem de contribuição** adotada na análise é de **25%**.
 
 ---
 
@@ -27,7 +37,8 @@ Os principais objetivos da análise são:
 - Correção de formatações conforme documentação;
 - Garantia de consistência no número de registros;
 - Tratamento de valores nulos;
-- Criação de chaves e métricas auxiliares.
+- Criação de chaves auxiliares;
+- Preparação da base analítica por cliente (`customer_id`).
 
 ---
 
@@ -36,7 +47,8 @@ Foram analisadas distribuições, estatísticas descritivas e outliers das princ
 - Valor total do pedido;
 - Frequência de compra;
 - Ticket médio;
-- Recência.
+- Recência;
+- Valor total gasto.
 
 #### Tratamento de Outliers
 Foram testados dois métodos:
@@ -48,56 +60,45 @@ O **IQR** foi escolhido por ser mais robusto para distribuições assimétricas 
 ---
 
 ### 3️⃣ Construção da Base Analítica Final
-Foi criada uma base agregada por **customer_id**, contendo métricas como:
+Foi criada uma base agregada por **customer_id**, contendo, por exemplo:
 - Quantidade de pedidos;
 - Frequência mensal;
 - Ticket médio;
 - Valor total gasto;
-- Recência (mediana do tempo entre pedidos);
-- Tempo de vida do cliente;
-- Número de restaurantes distintos;
-- Marcação de grupo (control × target).
+- Recência (mediana do tempo entre pedidos).
 
-Essa base serviu como insumo para o teste A/B e para a segmentação.
+Essa base foi utilizada tanto no teste A/B quanto na segmentação.
 
 ---
 
 ## 🧪 Teste A/B — Métricas Avaliadas
 
-As métricas foram comparadas entre **grupo controle** e **grupo target**, com testes estatísticos apropriados:
+As métricas foram comparadas entre **grupo controle** e **grupo target**, com testes estatísticos adequados:
 
-- **Retenção** → teste de proporções (z-test)
-- **Frequência de pedidos** → teste Mann-Whitney / t-test
-- **Ticket médio** → t-test
-- **Recência** (tempo entre pedidos) → Mann-Whitney
-- **Valor total gasto por cliente** → t-test
+- **Retenção** → teste de proporções (z-test);
+- **Frequência de pedidos** → teste Mann-Whitney / t-test;
+- **Ticket médio** → t-test;
+- **Recência (tempo entre pedidos)** → Mann-Whitney;
+- **Valor total gasto por cliente** → t-test.
 
 ### 📈 Principais Resultados
 
 - **Retenção**: aumento estatisticamente significativo no grupo target;
-- **Frequência**: aumento significativo de pedidos por usuário;
+- **Frequência**: aumento significativo no número de pedidos;
 - **Ticket médio**: sem diferença estatisticamente significativa;
-- **Recência**: usuários target compram com menor intervalo entre pedidos;
+- **Recência**: redução do tempo entre pedidos no grupo target;
 - **Valor total gasto**: uplift significativo no grupo target.
 
-👉 A campanha impactou o **comportamento de compra**, não o preço médio.
+👉 A campanha alterou o **comportamento de compra**, e não o preço médio.
 
 ---
 
 ## 💰 Análise de Viabilidade Financeira
 
-### Premissas adotadas:
-- Custo do cupom: **R$ 10,00 por usuário**, financiado integralmente pelo iFood;
+### Premissas Financeiras
+- Custo do cupom: **R$ 10,00 por usuário**;
 - Margem de contribuição: **25%**;
-- Objetivo da campanha: **retenção e aumento de LTV**, não lucro imediato.
-
-### Resultados:
-- O **resultado de curto prazo** pode ser negativo devido ao custo do incentivo;
-- O **LTV incremental por usuário é positivo**, sustentado por maior retenção e frequência;
-- O ROI total se torna positivo quando considerado o **impacto de longo prazo**.
-
-👉 A campanha é **financeiramente viável sob a ótica de LTV**.
-
+- Análise separada em **curto prazo (período do teste)** e **longo prazo (LTV)**.
 ---
 
 ## 🧠 Segmentação de Usuários
@@ -112,34 +113,21 @@ Foi aplicada segmentação via **KMeans**, utilizando variáveis comportamentais
 - Diversidade de restaurantes.
 
 ### Definição do número de clusters
-- Método do cotovelo (Elbow);
+- Método do cotovelo (Elbow Method);
 - Índice de Calinski-Harabasz.
 
 📌 O valor **k = 3** foi escolhido por apresentar o melhor equilíbrio entre separação estatística e interpretabilidade de negócio.
 
-Os clusters representam perfis distintos de usuários (baixo, médio e alto engajamento).
-
 ---
 
-## 🚀 Próximos Passos Recomendados
+## ⚙️ Requisitos
 
-- Avaliar o impacto do cupom **por segmento de usuário**;
-- Criar campanhas diferenciadas para cada cluster;
-- Testar cupons com **valores variáveis** conforme perfil;
-- Avaliar efeitos de longo prazo com janelas maiores;
-- Integrar métricas de churn e reincidência em novos testes.
+Para executar o notebook, é necessário:
 
----
+- Python ≥ 3.8  
+- Apache Spark (via `pyspark`)  
 
-## 📌 Conclusão
+### Bibliotecas Python
+```bash
+pip install pyspark pandas matplotlib seaborn scikit-learn statsmodels scipy
 
-A campanha de cupons:
-- **Aumentou retenção, frequência e LTV**;
-- Não elevou artificialmente o ticket médio;
-- Mostra-se uma **alavanca sustentável de crescimento**, quando bem segmentada.
-
-O uso combinado de **teste A/B, análise estatística e segmentação** permitiu uma visão completa do impacto da iniciativa, apoiando decisões orientadas a dados.
-
----
-
-📍 *Este projeto foi desenvolvido como parte de um desafio analítico, com foco em tomada de decisão baseada em dados, estatística aplicada e visão de negócio.*
